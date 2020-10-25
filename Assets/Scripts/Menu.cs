@@ -16,8 +16,9 @@ public class Menu : MonoBehaviour
     {
     }
 
-    public void OnClick()
+    public void StartGame()
     {
         SceneManager.LoadScene("persona");
     }
+
 }
