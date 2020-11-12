@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/interview.unity
     guid: 9c86bea296e2894489220ce998accfd3
+  - enabled: 1
+    path: Assets/Scenes/persona_demographic.unity
+    guid: 797d1e64f516ded44816402e99219e33
+  - enabled: 1
+    path: Assets/Scenes/scene2.unity
+    guid: 156e5c7e74362c44a833ae26726280e6
   m_configObjects: {}
