@@ -9,6 +9,7 @@ public class Menu : MonoBehaviour
 {
     public GameObject playerA;
     public GameObject playerB;
+    public Button play;
 
     static string selectedPlayer = "";
 
@@ -37,7 +38,7 @@ public class Menu : MonoBehaviour
             playerA.GetComponent<Image>().color = new Color32(255, 255, 225, 100);
             playerB.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         }
-        Debug.Log(character);
+        play.interactable = true;
     }
 
 }

@@ -855,14 +855,14 @@ RectTransform:
   m_GameObject: {fileID: 742789507}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4796875, y: 0.4796875, z: 0.4796875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 884032427}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 897.329, y: 522.9967}
+  m_AnchoredPosition: {x: 740, y: 200}
   m_SizeDelta: {x: 336, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &742789509
@@ -908,7 +908,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 884032423}
         m_TargetAssemblyTypeName: PersonaGame, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 5
@@ -918,6 +918,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: interview
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 884032423}
+        m_TargetAssemblyTypeName: PersonaGame, Assembly-CSharp
+        m_MethodName: SetInterviewStarted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &742789510
@@ -970,6 +982,7 @@ GameObject:
   - component: {fileID: 884032426}
   - component: {fileID: 884032425}
   - component: {fileID: 884032424}
+  - component: {fileID: 884032423}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -977,6 +990,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &884032423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884032422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db279697582bfec458dcc613eccb2ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goal: {fileID: 24160551}
+  interest: {fileID: 542823081}
+  painPoint: {fileID: 480323039}
+  Motivation: {fileID: 1489430059}
+  answer1: {fileID: 557582381}
+  answer2: {fileID: 576701039}
+  answer3: {fileID: 276754622}
+  answer4: {fileID: 1882142299}
+  answer5: {fileID: 917159152}
+  answer6: {fileID: 58751001}
+  canvas: {fileID: 884032426}
 --- !u!114 &884032424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1059,6 +1095,7 @@ RectTransform:
   - {fileID: 1882142300}
   - {fileID: 917159153}
   - {fileID: 58751002}
+  - {fileID: 742789508}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
