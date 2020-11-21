@@ -32,9 +32,26 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
     static bool interviewed = false;
     static bool isPersonaPage = false;
     static bool correctAnswer1 = false;
-    static bool correctAnswer2 = false;
-    static bool correctAnswer3 = false;
-    static bool correctAnswer4 = false;
+    static bool isUsed1 = false;
+    static bool isUsed2 = false;
+    static bool isUsed3 = false;
+    static bool isUsed4 = false;
+    static string usedAnswer1 = "";
+    static string usedAnswer2 = "";
+    static string usedAnswer3 = "";
+    static string usedAnswer4 = "";
+    static Vector3 pos1 = new Vector3();
+    static Vector3 pos2 = new Vector3();
+    static Vector3 pos3 = new Vector3();
+    static Vector3 pos4 = new Vector3();
+    static Vector3 pos5 = new Vector3();
+    static Vector3 pos6 = new Vector3();
+    static Vector3 startPos1 = new Vector3();
+    static Vector3 startPos2 = new Vector3();
+    static Vector3 startPos3 = new Vector3();
+    static Vector3 startPos4 = new Vector3();
+    static Vector3 startPos5 = new Vector3();
+    static Vector3 startPos6 = new Vector3();
 
     void Start()
     {
@@ -42,15 +59,34 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             UpdateAnsersPositions();
         }
-        if (calculated)
+        if (!interviewed)
         {
+            setAnswersColor();
+        }
+    }
 
+    public void Proceed()
+    {
+        if(isUsed1 && isUsed2 && isUsed3 && isUsed4)
+        {
+            isPersonaPage = false;
+            ChangeScene("feedback");
         }
     }
 
     public void ChangeScene(string target)
     {
         SceneManager.LoadScene(target);
+        if (isPersonaPage)
+        {
+            pos1 = answer1.GetComponent<RectTransform>().position;
+            pos2 = answer2.GetComponent<RectTransform>().position;
+            pos3 = answer3.GetComponent<RectTransform>().position;
+            pos4 = answer4.GetComponent<RectTransform>().position;
+            pos5 = answer5.GetComponent<RectTransform>().position;
+            pos6 = answer6.GetComponent<RectTransform>().position;
+            correctAnswer1 = true;
+        }
     }
 
     public void SetInterviewStarted()
@@ -72,8 +108,7 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         if (transform.name != "Canvas")
         {
-            int nr = transform.name[6] - '1';
-            if(!correctAnswers[nr] && interviewed)
+            if(interviewed)
             {
                 if (data.dragging)
                 {
@@ -94,43 +129,97 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
         if (transform.name != "Canvas")
         {
             Vector2 mouse = Input.mousePosition;
-            if (transform.name == "Answer5" && interviewed && goalLoc[0] < mouse.x && goalLoc[2] < mouse.y && goalLoc[1] > mouse.x && goalLoc[3] > mouse.y)
+            if (!isUsed1 && interviewed && goalLoc[0] < mouse.x && goalLoc[2] < mouse.y && goalLoc[1] > mouse.x && goalLoc[3] > mouse.y)
             {
                 goal.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
                 transform.position = hiddenAnswersPosition[0];
-                correctAnswers[4] = true;
-                correctAnswer1 = true;
+                clearPrevSpot();
+                usedAnswer1 = transform.name;
+                isUsed1 = true;
             }
-            else if (transform.name == "Answer6" && interviewed && interestLoc[0] < mouse.x && interestLoc[2] < mouse.y && interestLoc[1] > mouse.x && interestLoc[3] > mouse.y)
+            else if (!isUsed2 && interviewed && interestLoc[0] < mouse.x && interestLoc[2] < mouse.y && interestLoc[1] > mouse.x && interestLoc[3] > mouse.y)
             {
                 interest.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
                 transform.position = hiddenAnswersPosition[1];
-                correctAnswers[5] = true;
-                correctAnswer2 = true;
+                clearPrevSpot();
+                usedAnswer2 = transform.name;
+                isUsed2 = true;
             }
-            else if (transform.name == "Answer4" && interviewed && painPointLoc[0] < mouse.x && painPointLoc[2] < mouse.y && painPointLoc[1] > mouse.x && painPointLoc[3] > mouse.y)
+            else if (!isUsed3 && interviewed && painPointLoc[0] < mouse.x && painPointLoc[2] < mouse.y && painPointLoc[1] > mouse.x && painPointLoc[3] > mouse.y)
             {
                 painPoint.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
                 transform.position = hiddenAnswersPosition[2];
-                correctAnswers[3] = true;
-                correctAnswer3 = true;
+                clearPrevSpot();
+                usedAnswer3 = transform.name;
+                isUsed3 = true;
             }
-            else if (transform.name == "Answer1" && interviewed && MotivationLoc[0] < mouse.x && MotivationLoc[2] < mouse.y && MotivationLoc[1] > mouse.x && MotivationLoc[3] > mouse.y)
+            else if (!isUsed4 && interviewed && MotivationLoc[0] < mouse.x && MotivationLoc[2] < mouse.y && MotivationLoc[1] > mouse.x && MotivationLoc[3] > mouse.y)
             {
                 Motivation.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
                 transform.position = hiddenAnswersPosition[3];
-                correctAnswers[0] = true;
-                correctAnswer4 = true;
+                clearPrevSpot();
+                usedAnswer4 = transform.name;
+                isUsed4 = true;
             } else
             {
-                int nr = transform.name[6] - '1';
-                Debug.Log(correctAnswers[nr]);
-                if (!correctAnswers[nr] && interviewed)
+                clearPrevSpot();
+                if (transform.name == "Answer1")
                 {
-                    transform.position = answersPositions[nr];
-
+                    transform.position = startPos1;
+                }
+                else if (transform.name == "Answer2")
+                {
+                    transform.position = startPos2;
+                }
+                else if (transform.name == "Answer3")
+                {
+                    transform.position = startPos3;
+                }
+                else if (transform.name == "Answer4")
+                {
+                    transform.position = startPos4;
+                }
+                else if (transform.name == "Answer5")
+                {
+                    transform.position = startPos5;
+                }
+                else if (transform.name == "Answer6")
+                {
+                    transform.position = startPos6;
                 }
             }
+        }
+    }
+
+    private void clearPrevSpot()
+    {
+        if(transform.name == usedAnswer1)
+                {
+            usedAnswer1 = "";
+            isUsed1 = false;
+            correctAnswers[0] = false;
+            goal.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        }
+        else if (transform.name == usedAnswer2)
+        {
+            usedAnswer2 = "";
+            isUsed2 = false;
+            correctAnswers[1] = false;
+            interest.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        }
+        else if (transform.name == usedAnswer3)
+        {
+            usedAnswer3 = "";
+            isUsed3 = false;
+            correctAnswers[2] = false;
+            painPoint.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        }
+        else if (transform.name == usedAnswer4)
+        {
+            usedAnswer4 = "";
+            isUsed4 = false;
+            correctAnswers[3] = false;
+            Motivation.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         }
     }
 
@@ -186,7 +275,7 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
                 painPoint.GetComponent<RectTransform>().position,
                 Motivation.GetComponent<RectTransform>().position,
             };
-            correctAnswers = new bool[] { correctAnswer4, false, false, correctAnswer3, correctAnswer1, correctAnswer2 };
+            correctAnswers = new bool[] { isUsed1, isUsed2, isUsed3, isUsed4 };
             calculated = true;
             SetAnswersPositions();
         }
@@ -194,27 +283,65 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
 
     private void SetAnswersPositions()
     {
-        for(var i = 0; i<6; i++)
+        if (correctAnswer1)
         {
-            if (correctAnswers[i])
+            if (usedAnswer1 == answer1.name || usedAnswer2 == answer1.name || usedAnswer3 == answer1.name || usedAnswer4 == answer1.name)
             {
-                if(i == 4){
-                    answer5.GetComponent<RectTransform>().position = hiddenAnswersPosition[0];
-                    goal.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
-                } else if (i == 5){
-                    answer6.GetComponent<RectTransform>().position = hiddenAnswersPosition[1];
-                    interest.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
-                }
-                else if (i == 3){
-                    answer4.GetComponent<RectTransform>().position = hiddenAnswersPosition[2];
-                    painPoint.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
-                }
-                else if (i == 0){
-                    answer1.GetComponent<RectTransform>().position = hiddenAnswersPosition[3];
-                    Motivation.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
-                }
+                answer1.GetComponent<RectTransform>().position = pos1;
+            }
+            if (usedAnswer1 == answer2.name || usedAnswer2 == answer2.name || usedAnswer3 == answer2.name || usedAnswer4 == answer2.name)
+            {
+                answer2.GetComponent<RectTransform>().position = pos2;
+            }
+            if (usedAnswer1 == answer3.name || usedAnswer2 == answer3.name || usedAnswer3 == answer3.name || usedAnswer4 == answer3.name)
+            {
+                answer3.GetComponent<RectTransform>().position = pos3;
+            }
+            if (usedAnswer1 == answer4.name || usedAnswer2 == answer4.name || usedAnswer3 == answer4.name || usedAnswer4 == answer4.name)
+            {
+                answer4.GetComponent<RectTransform>().position = pos4;
+            }
+            if (usedAnswer1 == answer5.name || usedAnswer2 == answer5.name || usedAnswer3 == answer5.name || usedAnswer4 == answer5.name)
+            {
+                answer5.GetComponent<RectTransform>().position = pos5;
+            }
+            if (usedAnswer1 == answer6.name || usedAnswer2 == answer6.name || usedAnswer3 == answer6.name || usedAnswer4 == answer6.name)
+            {
+                answer6.GetComponent<RectTransform>().position = pos6;
+            }
+            if (isUsed1)
+            {
+                goal.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+            }
+            if (isUsed2)
+            {
+                interest.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+            }
+            if (isUsed3)
+            {
+                painPoint.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+            }
+            if (isUsed4)
+            {
+                Motivation.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
             }
         }
+    }
+
+    private void setAnswersColor()
+    {
+        answer1.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+        answer2.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+        answer3.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+        answer4.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+        answer5.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+        answer6.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+        startPos1 = answer1.GetComponent<RectTransform>().position;
+        startPos2 = answer2.GetComponent<RectTransform>().position;
+        startPos3 = answer3.GetComponent<RectTransform>().position;
+        startPos4 = answer4.GetComponent<RectTransform>().position;
+        startPos5 = answer5.GetComponent<RectTransform>().position;
+        startPos6 = answer6.GetComponent<RectTransform>().position;
     }
 
 }
