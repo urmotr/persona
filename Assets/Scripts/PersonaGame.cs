@@ -52,16 +52,17 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
     static Vector3 startPos4 = new Vector3();
     static Vector3 startPos5 = new Vector3();
     static Vector3 startPos6 = new Vector3();
+    static string stage = "stage1";
 
     void Start()
     {
         if(isPersonaPage)
         {
             UpdateAnsersPositions();
-        }
-        if (!interviewed)
-        {
-            setAnswersColor();
+            if (!interviewed)
+            {
+                setAnswersColor();
+            }
         }
     }
 
@@ -71,12 +72,23 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             isPersonaPage = false;
             ChangeScene("feedback");
+            if (getCorrectAnswersCount() >= 3 && stage != "stage3")
+            {
+                stage = "stage2";
+            }
         }
     }
 
     public void ChangeScene(string target)
     {
-        SceneManager.LoadScene(target);
+        if(target == "stage")
+        {
+            SceneManager.LoadScene(stage);
+        } 
+        else
+        {
+            SceneManager.LoadScene(target);
+        }
         if (isPersonaPage)
         {
             pos1 = answer1.GetComponent<RectTransform>().position;
@@ -342,6 +354,29 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
         startPos4 = answer4.GetComponent<RectTransform>().position;
         startPos5 = answer5.GetComponent<RectTransform>().position;
         startPos6 = answer6.GetComponent<RectTransform>().position;
+    }
+
+    private int getCorrectAnswersCount()
+    {
+        int count = 0;
+        if(usedAnswer1 == "Answer5")
+        {
+            count++;
+        }
+        if (usedAnswer2 == "Answer6")
+        {
+            count++;
+        }
+        if (usedAnswer3 == "Answer4")
+        {
+            count++;
+        }
+        if (usedAnswer4 == "Answer1")
+        {
+            count++;
+        }
+        Debug.Log(count);
+        return count;
     }
 
 }

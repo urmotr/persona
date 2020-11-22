@@ -449,11 +449,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 48
+    m_Font: {fileID: 12800000, guid: 95fc1794ccf89054e8a8052e84650cb1, type: 3}
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 48
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -461,7 +461,23 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: '
+
+
+
+    I think today is becoming one of the best day in my life.
+
+    i''m
+    solving the second of my town biggest problem.
+
+    I''m getting my favorite
+    job in startup company as UI/UX designer
+
+    
+
+    
+
+'
 --- !u!222 &1255973770
 CanvasRenderer:
   m_ObjectHideFlags: 0

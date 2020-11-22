@@ -357,7 +357,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: persona_demographic
+          m_StringArgument: stage
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 291362660}
@@ -877,19 +877,25 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 48
+    m_Font: {fileID: 12800000, guid: 5c2ec7c47df804e4cb19679afd1572ae, type: 3}
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 48
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "\n\nOh my god! I have to solve the first the biggest problem than got
+    the job.\nI would design an app for Dating. I could not solved in real world
+    but I have to make it in  digital world.\nMy task is understand user persona
+    so that we can use the persona to design and develop our app.\nTo understand
+    the persona, I will have group interviews where there are 5 participants and
+    5 questions.\nBy using their answers, I complete the persona document for our
+    dating app. \r\n\r"
 --- !u!222 &1812621877
 CanvasRenderer:
   m_ObjectHideFlags: 0
