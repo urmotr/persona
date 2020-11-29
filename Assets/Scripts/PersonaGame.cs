@@ -53,6 +53,8 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
     static Vector3 startPos5 = new Vector3();
     static Vector3 startPos6 = new Vector3();
     static string stage = "stage1";
+    static string selectedAbout = "";
+    static string selectedQuote = "";
 
     void Start()
     {
@@ -68,14 +70,36 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void Proceed()
     {
-        if(isUsed1 && isUsed2 && isUsed3 && isUsed4)
+        if(isUsed1 && isUsed2 && isUsed3 && isUsed4 && stage == "stage1")
         {
             isPersonaPage = false;
-            ChangeScene("feedback");
-            if (getCorrectAnswersCount() >= 3 && stage != "stage3")
+            if (getCorrectAnswersCount() == 4 && stage != "stage3")
             {
+                isPersonaPage = false;
                 stage = "stage2";
+                ChangeScene("stage");
             }
+            else
+            {
+                SetInterviewStarted();
+                ChangeScene("interview");
+            }
+        } 
+        else if(selectedAbout != "" && stage == "stage2")
+        {
+            if (selectedAbout == "answerA")
+            {
+                stage = "stage3";
+                ChangeScene("stage");
+            }
+            else
+            {
+                ChangeScene("feedback");
+            }
+        }
+        else if (selectedQuote != "")
+        {
+            ChangeScene("finalFeedback");
         }
     }
 
@@ -375,8 +399,17 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             count++;
         }
-        Debug.Log(count);
         return count;
+   }
+
+   public void UseAbout(string about)
+    {
+        selectedAbout = about;
+    }
+
+    public void UseQuote(string quote)
+    {
+        selectedQuote = quote;
     }
 
 }

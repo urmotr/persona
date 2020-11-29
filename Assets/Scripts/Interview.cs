@@ -16,38 +16,38 @@ public class Interview : MonoBehaviour
         };
     static string[] answers1 = new string[5] {
         "...",
-        "I like online game so I make new friends there.",
-        "",
-        "",
-        ""
+        "I like online game so I make new friends there",
+        "Loneliness",
+        "Random encouraging messages",
+        "Make friends"
         };
     static string[] answers2 = new string[5] {
         "No",
-        "I meet new people often when I go to the party.",
-        "",
-        "",
-        ""
+        "I meet new people often when I go to the party",
+        "Curiosity",
+        "Selfies or no face photo profiles",
+        "To see how much other people like me as compared to their other dates"
         };
     static string[] answers3 = new string[5] {
         "No",
         "I don't have chance to see new people so often... but I sometimes join a board game event and I can see new people there.",
-        "",
-        "",
-        ""
+        "Just broke up with my girlfriend",
+        "Section to list favourite couples in my bio",
+        "To find a new friend/wife"
         };
     static string[] answers4 = new string[5] {
         "Yes",
         "My friends often have a home party, whenever I join the party, I can see new people.",
-        "",
-        "",
-        ""
+        "Hope to find a partner",
+        "Friends opinions",
+        "Meet my match"
         };
     static string[] answers5 = new string[5] {
         "Yes",
         "I don't know...I don't remember",
-        "",
-        "",
-        ""
+        "Boredom",
+        "Reminders to take a break and enjoy real life",
+        "Just to have someone to chat with"
         };
     static int questionNr = 0;
     public Text question;
