@@ -259,7 +259,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Title
+  m_Text: Persona Game
 --- !u!222 &184417633
 CanvasRenderer:
   m_ObjectHideFlags: 0

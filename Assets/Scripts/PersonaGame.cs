@@ -68,6 +68,33 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
         }
     }
 
+    public void restart()
+    {
+          Vector3 position;
+          timeCount = 0.0f;
+          calculated = false;
+          interviewed = false;
+          isPersonaPage = true;
+          correctAnswer1 = false;
+          isUsed1 = false;
+          isUsed2 = false;
+          isUsed3 = false;
+          isUsed4 = false;
+          usedAnswer1 = "";
+          usedAnswer2 = "";
+          usedAnswer3 = "";
+          usedAnswer4 = "";
+          pos1 = new Vector3();
+          pos2 = new Vector3();
+          pos3 = new Vector3();
+          pos4 = new Vector3();
+          pos5 = new Vector3();
+          pos6 = new Vector3();
+          stage = "stage1";
+          selectedAbout = "";
+          selectedQuote = "";
+    }
+
     public void Proceed()
     {
         if(isUsed1 && isUsed2 && isUsed3 && isUsed4 && stage == "stage1")
@@ -82,7 +109,7 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
             else
             {
                 SetInterviewStarted();
-                ChangeScene("interview");
+                ChangeScene("feedback");
             }
         } 
         else if(selectedAbout != "" && stage == "stage2")
@@ -162,7 +189,7 @@ public class PersonaGame : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (transform.name != "Canvas")
+        if (transform.name != "Canvas" && interviewed)
         {
             Vector2 mouse = Input.mousePosition;
             if (!isUsed1 && interviewed && goalLoc[0] < mouse.x && goalLoc[2] < mouse.y && goalLoc[1] > mouse.x && goalLoc[3] > mouse.y)
