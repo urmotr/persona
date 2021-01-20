@@ -913,13 +913,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\n\nOh my god! I have to solve the first the biggest problem than got
-    the job.\nI would design an app for Dating. I could not solved in real world
-    but I have to make it in  digital world.\nMy task is understand user persona
-    so that we can use the persona to design and develop our app.\nTo understand
-    the persona, I will have group interviews where there are 5 participants and
-    5 questions.\nBy using their answers, I complete the persona document for our
-    dating app. \r\n\r"
+  m_Text: "\n\nOh my god! I have to solve the first the biggest problem than I got
+    as the job.\nI would design an app for Dating. I could not have solved in real
+    world but I have to make it in the digital world.\nMy task is to understand the
+    user persona so that we could use the persona to design and develop our app.\nTo
+    understand the persona, I will have to participate in a group interview where
+    there are 5 participants and 5 questions.\nBy using their answers, I can complete
+    the persona document for our dating app. \r\n\r"
 --- !u!222 &1812621877
 CanvasRenderer:
   m_ObjectHideFlags: 0
